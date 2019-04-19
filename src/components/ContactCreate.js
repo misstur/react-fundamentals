@@ -8,7 +8,7 @@ export default class ContactCreate extends React.Component {
             phone: ''
         };
         this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleChange(e) {
@@ -51,8 +51,8 @@ export default class ContactCreate extends React.Component {
     }
 }
 
-ContactCreate.propType = {
-    onCreate: React.propType.func
+ContactCreate.propTypes = {
+    onCreate: React.PropTypes.func
 };
 
 ContactCreate.defaultProps = {

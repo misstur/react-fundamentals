@@ -1,9 +1,9 @@
 import React from 'react';
 import ContactInfo from './ContactInfo';
-// import ContactDetails from "./ContactDetails";
-// import ContactCreate from "./ContactCreate";
+import ContactDetails from "./ContactDetails";
+import ContactCreate from "./ContactCreate";
 
-//import update from 'react-addons-update';
+import update from 'react-addons-update';
 
 export default class Contact extends React.Component {
     
@@ -53,6 +53,9 @@ export default class Contact extends React.Component {
     }
 
     handleRemove() {
+        if (this.state.selectedKey < 0) {
+            return;
+        }
         this.setState({
             contactData: update(this.state.contactData, 
                 { $splice : [[this.state.selectedKey, 1]] }
@@ -94,7 +97,7 @@ export default class Contact extends React.Component {
         return (
             <div>
                 <h1>Contacts</h1>
-                /*
+                
                 <input 
                     name="keyword" 
                     placeholder="Search" 
@@ -106,11 +109,14 @@ export default class Contact extends React.Component {
                 <ContactDetails 
                     isSelected={this.state.selectedKey != -1}
                     contact={this.state.contactData[this.state.selectedKey]}
+                    onRemove={this.handleRemove}
+                    onEdit={this.handleEdit}
                 />
                 <ContactCreate
                     onCreate={this.handleCreate}
                 />
-                */
+                
+                
             </div>
         );
     }
