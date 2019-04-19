@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: ['react-hot-loader/patch', './src/index.js'] ,
 
     output: {
         path: __dirname + '/public/',
@@ -16,22 +16,22 @@ module.exports = {
         contentBase: __dirname + '/public/',
     },
 
-    module: {
-     
-        rules: [
+    module:{
+        loaders: [
             {
-                test: /\.es6$/,
+                test: /.js$/,
+                loader: 'babel',
                 exclude: /node_modules/,
-                use: 'babel-loader'
-              }
-          ]
+                query: {
+                    cacheDirectory: true,
+                    presets: ['es2015', 'react'],
+                    plugins: ["react-hot-loader/babel"]
+                }
+            }
+        ]
     },
 
-    resolve: {
-        extensions: ['.js', '.es6']
-      },
-    
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ]
-}
+};
