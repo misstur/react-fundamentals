@@ -15,13 +15,14 @@ export default class ContactCreate extends React.Component {
     handleChange(e) {
         let nextState = {};
         nextState[e.target.name] = e.target.value;
+        console.log(e.target.value);
         this.setState(nextState);
     }
 
     handleClick() {
         const contact = {
             name: this.state.name,
-            phone: this.state.phpne
+            phone: this.state.phone
         };
 
         this.props.onCreate(contact);
